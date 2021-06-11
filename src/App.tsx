@@ -1,26 +1,27 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React , {FC , Fragment , useState , createContext , Dispatch} from 'react';
+import './styles.css'
+import Header from './components/Header'
+import ClickerArea from './components/ClickerArea' ; 
 
-function App() {
+// eslint-disable-next-line
+export const ClickedContext = createContext<[number , any]>([0 , ""]) ; 
+export const HasStartedContext = createContext<any>([]) ; 
+const App:FC = () => {
+  const countState = useState<number>(0); 
+  const startedState = useState<boolean>(false); 
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <HasStartedContext.Provider value  = {startedState}>
+
+    <ClickedContext.Provider value = {countState}>
+      <Fragment>
+      <div className="app">
+        <Header />
+        <ClickerArea/>
+      </div>
+    </Fragment>
+    </ClickedContext.Provider>
+    </HasStartedContext.Provider>
+  )
 }
 
 export default App;
