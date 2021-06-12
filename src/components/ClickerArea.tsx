@@ -9,15 +9,18 @@ const ClickerArea:FC = () => {
   
     const handleClick:() => void = () => {
         if(started === false){
-            
+            setIsStarted(true) ; 
+            setCount(count + 1) ; 
+        }else {
+            setCount(count + 1) ; 
         }
     }
     return (
         <div className="area__wrapper">
             <button className="click_area" onClick = {handleClick} ref = {clickRef}>
-                <h1>
+                <big>
                 {divText}
-                </h1>
+                </big>
             </button>
         </div>
     )

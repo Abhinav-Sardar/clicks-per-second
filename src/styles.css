@@ -43,7 +43,6 @@ body {
   width: 70vw;
   background-color: black;
   height: 30vh;
-  text-align: center;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -57,8 +56,16 @@ body {
   border: 0;
 }
 
+.area__wrapper .click_area big {
+  font-size: 4vh;
+}
+
 .area__wrapper .click_area:active {
   background-color: white;
+}
+
+.area__wrapper .click_area:active big {
+  color: black;
 }
 
 .panels {
@@ -136,5 +143,15 @@ body {
 
 .panel .clicks {
   background: linear-gradient(45deg, #00b09b, #96c93d);
+}
+
+.score {
+  height: 50px;
+  width: 50px;
+  border: 1px solid white;
+  background-color: white;
+  position: relative;
+  top: 0;
+  left: 0;
 }
 /*# sourceMappingURL=styles.css.map */

@@ -42,12 +42,17 @@ body {
         width:70vw ; 
         background-color: black;
         height:30vh ; 
-        text-align:center ; 
         @include flex ; 
         color:white ; 
         border:0 ; 
+        big{
+            font-size:4vh ; 
+        }
         &:active{
             background-color: white;
+            big {
+                color:black ; 
+            }
         }
     }
 
@@ -101,4 +106,14 @@ body {
     }
 
     
+}
+
+.score {
+    height:50px ; 
+    width:50px ; 
+    border:1px solid white ; 
+    background-color: white;
+    position:relative ; 
+    top:0 ; 
+    left:0 ; 
 }
