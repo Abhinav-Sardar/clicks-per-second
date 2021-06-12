@@ -2,7 +2,7 @@ import React , {FC , Fragment , useState , createContext , Dispatch} from 'react
 import './styles.css'
 import Header from './components/Header'
 import ClickerArea from './components/ClickerArea' ; 
-
+import Panels from './components/Panels' ; 
 // eslint-disable-next-line
 export const ClickedContext = createContext<[number , any]>([0 , ""]) ; 
 export const HasStartedContext = createContext<any>([]) ; 
@@ -16,6 +16,7 @@ const App:FC = () => {
       <Fragment>
       <div className="app">
         <Header />
+        <Panels/>
         <ClickerArea/>
       </div>
     </Fragment>

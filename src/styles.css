@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap");
 * {
   padding: 0;
   margin: 0;
@@ -51,5 +53,88 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  color: white;
+  border: 0;
+}
+
+.area__wrapper .click_area:active {
+  background-color: white;
+}
+
+.panels {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  margin: 5vh 0;
+}
+
+.panel {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border: 1px solid white;
+  height: 30vh;
+  width: 15vw;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  align-items: center;
+}
+
+.panel .num {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-flex: 2;
+      -ms-flex: 2;
+          flex: 2;
+  width: 100%;
+  font-size: 10vh;
+  font-family: 'Quicksand', sans-serif;
+}
+
+.panel .header {
+  text-align: center;
+  border-bottom: 1px solid white;
+  width: 100%;
+  margin-top: 0vh;
+  font-size: 2.2vw;
+  font-family: 'Poppins', sans-serif;
+}
+
+.panel .time {
+  background: linear-gradient(45deg, #6a11cb, #2575fc);
+}
+
+.panel .cps {
+  background: linear-gradient(45deg, #fc4a1a, #f7b733);
+}
+
+.panel .clicks {
+  background: linear-gradient(45deg, #00b09b, #96c93d);
 }
 /*# sourceMappingURL=styles.css.map */
