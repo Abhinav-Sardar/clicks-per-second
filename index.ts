@@ -6,6 +6,29 @@ const content = document.querySelectorAll('.content') ;
 let isStarted:boolean = false ; 
 let statusString:string = "Click here to start testing"
 
+interface Result {
+    src:string , 
+    animal:string , 
+}
+
+const results:Result[] = [
+    {
+        src:"https://media.tenor.com/images/5dd275408bdf64d6ff214ace0ae1ddaa/tenor.gif" , 
+        animal:"Turtle"
+    } , 
+    {
+        src:"https://media.tenor.com/images/6ad48709427972fd5027749958c9afff/tenor.gif" , 
+        animal:"Rabbit"
+    } , 
+    {
+        src:"https://media.tenor.com/images/ca2c64574a02483d28da2a3b8168f760/tenor.gif" , 
+        animal:"Horse"
+    } , 
+    {
+        src:"" , 
+        animal:""
+    }
+]
 
 setInterval(() => {
     content.forEach((element , index) => {
@@ -48,3 +71,8 @@ const handleClick:() => void = () =>{
 
 click.addEventListener('click' , handleClick) ;
 
+let a = document.querySelectorAll('a') ; 
+a.forEach(el => {
+    el.href= "" ; 
+    el.onclick = () => console.log('HI')
+})

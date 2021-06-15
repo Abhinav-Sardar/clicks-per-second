@@ -6,6 +6,24 @@ let clicks = 0;
 const content = document.querySelectorAll('.content');
 let isStarted = false;
 let statusString = "Click here to start testing";
+const results = [
+    {
+        src: "https://media.tenor.com/images/5dd275408bdf64d6ff214ace0ae1ddaa/tenor.gif",
+        animal: "Turtle"
+    },
+    {
+        src: "https://media.tenor.com/images/6ad48709427972fd5027749958c9afff/tenor.gif",
+        animal: "Rabbit"
+    },
+    {
+        src: "https://media.tenor.com/images/ca2c64574a02483d28da2a3b8168f760/tenor.gif",
+        animal: "Horse"
+    },
+    {
+        src: "https://media.tenor.com/images/5dd275408bdf64d6ff214ace0ae1ddaa/tenor.gif",
+        animal: "Cheetah"
+    }
+];
 setInterval(() => {
     content.forEach((element, index) => {
         element.innerHTML = String([time, cps, clicks][index]);
@@ -39,3 +57,8 @@ const handleClick = () => {
     }
 };
 click.addEventListener('click', handleClick);
+let a = document.querySelectorAll('a');
+a.forEach(el => {
+    el.href = "";
+    el.onclick = () => console.log('HI');
+});
