@@ -124,10 +124,13 @@ body {
     }
     }
     .score_info {
-            flex:1; 
-            height:100% ; 
-    border:1px solid white ; 
-
+        flex:2; 
+        height:100% ; 
+        border:1px solid white ; 
+        @include flex() ; 
+        align-items: center;
+        justify-content: flex-start;
+        flex-direction: column;
     }
     }
 }

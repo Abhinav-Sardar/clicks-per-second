@@ -5,11 +5,12 @@ let clicks:number = 0 ;
 const content = document.querySelectorAll('.content') ; 
 let isStarted:boolean = false ; 
 let statusString:string = "Click here to start testing"
-
+const resultsContainer = document.getElementById('results')!
 interface Result {
     src:string , 
     animal:string , 
 }
+
 
 const results:Result[] = [
     {
@@ -57,6 +58,20 @@ const handleClick:() => void = () =>{
                     if(time === 5){
                         clearInterval(timeSetter) ; 
                         click.disabled = true ; 
+                        statusString = "Click here to start playing" ; 
+                        setTimeout(() =>{window.scrollBy({
+                            top:900000  , 
+                            behavior:"smooth"
+                        }) ; 
+                        
+                    } , 500) ; 
+                    setTimeout(() => {
+                        isStarted = false ; 
+                        time = 0 ; 
+                        cps = 0 ; 
+                        clicks = 0 ; 
+                        click.disabled = false
+                    }  , 800)
                     }
             } , 1000)
         } , 1000) ; 
@@ -76,3 +91,4 @@ a.forEach(el => {
     el.href= "" ; 
     el.onclick = () => console.log('HI')
 })
+
