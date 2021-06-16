@@ -3,18 +3,98 @@ let time:number = 0 ;
 let cps:number =0 ; 
 let clicks:number = 0 ;
 const content = document.querySelectorAll('.content') ; 
-let isStarted:boolean = false ; 
-let statusString:string = "Click here to start testing"
-const resultsContainer = document.getElementById('results')!
+let isStarted:boolean = false ;
+
+enum statuses {
+    initial = "Click here to start playing" , 
+    game__started = 'Click!!!' , 
+}
+
+
+let statusString:string = statuses.initial ; 
+const resultsContainer = document.getElementById('results')! ; 
 interface Result {
     src:string , 
     animal:string , 
 }
 
+const returnMarkDown:(index:number , cps:number) => string = (index:number , cpspp:number) =>{ 
+    return `
+    <div class="img__cont">
+            <img src=${results[index].src} alt="">
+        </div>
+        <div class = "score_info">
+        <h1>Your rank is <strong>${results[index].animal}</strong></h1>
+    <div class="stars">
+    ${
+        index === 0 ? 
+        `
+        <i class="fas fa-star gold"></i>
+        <i class="fas fa-star gray"></i>
+        <i class="fas fa-star gray"></i>
+        <i class="fas fa-star gray"></i>
+        `
+        : index=== 1 ? 
+        ` <i class="fas fa-star gold"></i>
+        <i class="fas fa-star gold"></i>
+        <i class="fas fa-star gray"></i>
+        <i class="fas fa-star gray"></i>`
+        : index === 2 ? 
+        ` <i class="fas fa-star gold"></i>
+        <i class="fas fa-star gold"></i>
+        <i class="fas fa-star gold"></i>
+        <i class="fas fa-star gray"></i>`
+        : index === 3 ? `
+        <i class="fas fa-star gold"></i>
+        <i class="fas fa-star gold"></i>
+        <i class="fas fa-star gold"></i>
+        <i class="fas fa-star gold"></i>`
+        :""
+
+    }
+    </div>
+    <h2>You clicked with speed of <strong>${cpspp} CPS</strong></h2></div>
+`
+}
+
+
+
+const setScore= (...args:number[]) => { 
+    document.getElementById('results')!.style.display = 'flex' ; 
+    window.scrollBy({
+        top:900000  , 
+        behavior:"smooth"
+    })
+    setTimeout(() =>  click.disabled = false  , 300)
+    let [ AAA, cpsparams ,BBB ] = args ;
+    console.log(cpsparams)
+    if(cpsparams <= 3){
+        console.log('Turtle') ; 
+        let md = returnMarkDown(0 , cpsparams) ; 
+        document.querySelector('.score__info')!.innerHTML = md ; 
+    }
+    else if(cpsparams >3 && cpsparams <= 6){
+        let md = returnMarkDown(1 , cpsparams) ; 
+        console.log('Rabbit') ; 
+        document.querySelector('.score__info')!.innerHTML = md
+    }
+    else if (cpsparams >= 6 && cpsparams <= 10){
+        let md = returnMarkDown(2 , cpsparams)
+        console.log('Horse') ; 
+        document.querySelector('.score__info')!.innerHTML = md ; 
+    }
+    else if (cpsparams > 10) {
+        let md = returnMarkDown(3 , cpsparams)
+        console.log('CHeetah') ; 
+                document.querySelector('.score__info')!.innerHTML = md ; 
+    }
+}
+
+
 
 const results:Result[] = [
     {
-        src:"https://media.tenor.com/images/5dd275408bdf64d6ff214ace0ae1ddaa/tenor.gif" , 
+        src:"https://media.tenor.com/images/0c69676da9329a79f75c7d3717395dc0/tenor.gif" , 
         animal:"Turtle"
     } , 
     {
@@ -26,10 +106,14 @@ const results:Result[] = [
         animal:"Horse"
     } , 
     {
-        src:"" , 
-        animal:""
+        src:"https://media.tenor.com/images/5dd275408bdf64d6ff214ace0ae1ddaa/tenor.gif" , 
+        animal:"Cheetah", 
+        
     }
-]
+]; 
+
+
+
 
 setInterval(() => {
     content.forEach((element , index) => {
@@ -48,7 +132,7 @@ setInterval(() => {
 
 const handleClick:() => void = () =>{ 
     if(isStarted === false){
-        statusString = 'Click!!!'
+        statusString = statuses.game__started ; 
         isStarted = true ;
         clicks++ ; 
         setTimeout(() => {
@@ -58,20 +142,21 @@ const handleClick:() => void = () =>{
                     if(time === 5){
                         clearInterval(timeSetter) ; 
                         click.disabled = true ; 
-                        statusString = "Click here to start playing" ; 
+                        statusString = statuses.initial ; 
                         setTimeout(() =>{window.scrollBy({
                             top:900000  , 
                             behavior:"smooth"
                         }) ; 
                         
-                    } , 500) ; 
+                    } , 300) ; 
                     setTimeout(() => {
+                        setScore(time , cps , clicks) ; 
                         isStarted = false ; 
                         time = 0 ; 
                         cps = 0 ; 
                         clicks = 0 ; 
-                        click.disabled = false
-                    }  , 800)
+                       
+                    }  , 500)
                     }
             } , 1000)
         } , 1000) ; 
@@ -86,9 +171,5 @@ const handleClick:() => void = () =>{
 
 click.addEventListener('click' , handleClick) ;
 
-let a = document.querySelectorAll('a') ; 
-a.forEach(el => {
-    el.href= "" ; 
-    el.onclick = () => console.log('HI')
-})
 
+// setInterval(() => click.click() , 200)
